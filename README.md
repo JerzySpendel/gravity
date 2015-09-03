@@ -1,0 +1,3 @@
+![alt tag](https://raw.githubusercontent.com/JerzySpendel/gravity/master/img/grav1.png)
+After a while...
+![alt tag](https://raw.githubusercontent.com/JerzySpendel/gravity/master/img/grav2.png)
