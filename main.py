@@ -12,7 +12,7 @@ class Planet:
     def __init__(self, galaxy, v=None, r=None, mass=None):
         self.v = v or [0, 0]
         self.r = r or [100, 100]
-        self.mass = mass or 10
+        self.mass = mass or 1000
         self.galaxy = galaxy
 
     @property
@@ -76,10 +76,14 @@ class Planet:
 class Galaxy:
     def __init__(self, planets=None):
         if planets is None:
-            self.planets = [Planet(self, r=[15, 15]), Planet(self, r=[10, 10])]
+            planets = []
+            for i in range(5):
+                planet1 = Planet(self, r=[200+i*20, 200], v=[5, 0])
+                planet2 = Planet(self, r=[200+i*20, 210], v=[-5, 0])
+                planets.extend([planet1, planet2])
+            self.planets = planets
         else:
             self.planets = planets
-        self.add_random_planets(13)
 
     def add_random_planets(self, n):
         x_margin = 200
@@ -119,7 +123,7 @@ class GalaxyView:
     def __init__(self):
         self.galaxy = Galaxy()
         self.screen = pygame.display.set_mode((500, 500))
-        self.clock = GameClock(100, update_callback=self.update)
+        self.clock = GameClock(200, update_callback=self.update)
 
     def draw_planets(self):
         for planet in self.galaxy.planets:
